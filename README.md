@@ -12,6 +12,29 @@ Before running the tests, make sure you have the following installed:
 *   **pip** (Python package manager): Usually comes with Python.
 *   **Node.js** (required to install Playwright browsers): [Download Node.js](https://nodejs.org/en/download/)
 
+## Environment Variables
+
+Sensitive information like `BASE_URL`, `USER_EMAIL`, and `USER_PASSWORD` are stored in a `.env` file. This file is located in the `TollShopApp/` directory.
+
+**How to create the `.env` file:**
+1.  Navigate to the `TollShopApp/` directory.
+2.  Create a new file named `.env`.
+3.  Add the following content to the `.env` file:
+
+```
+BASE_URL=https://practicesoftwaretesting.com/
+USER_EMAIL=customer2@practicesoftwaretesting.com
+USER_PASSWORD= welcome01
+```
+IMPORTANT NOTICE: The data used in this example is fictitious and intended solely for testing purposes. It is crucial that when replicating this process, you use test data and do not insert or share real or confidential information.
+
+Example `.env` file:
+```
+BASE_URL=https://practicesoftwaretesting.com/
+USER_EMAIL=test@example.com
+USER_PASSWORD=password123
+```
+
 ## Environment Setup
 
 Follow the steps below to set up the environment and run the tests:
@@ -36,7 +59,7 @@ Follow the steps below to set up the environment and run the tests:
     ```bash
     pip install -r requirements.txt
     ```
-    (If you don't have a `requirements.txt` yet, create one with `pip freeze > requirements.txt` after installing `playwright` and `pytest`).
+    (The `requirements.txt` file now includes `python-dotenv` for loading environment variables.)
 
 4.  **Install Playwright Browsers:**
     ```bash
@@ -64,4 +87,5 @@ pytest purchase_products.py --headed
 *   `PageOjbect/`: Contains Page Object classes for interacting with web elements.
 *   `Tests/`: Contains Pytest test files.
 *   `requirements.txt`: List of Python dependencies.
+*   `.env`: Environment variables for sensitive data
 *   `README.md`: This file.
