@@ -28,8 +28,8 @@ CARD_NAME = os.getenv('CARD_NAME')
 
 def test_purchase_products(playwright: Playwright) -> None:
     """Tests the complete product purchase flow in the TollShopApp application."""
-    # Configures the Chromium browser for the test (headless=False for visualization)
-    browser = playwright.chromium.launch(headless=False)
+    # Configures the Chromium browser for the test (add headless=False for visualization)
+    browser = playwright.chromium.launch()
     # Creates a new browser context
     context = browser.new_context()
     # Creates a new page in the context
