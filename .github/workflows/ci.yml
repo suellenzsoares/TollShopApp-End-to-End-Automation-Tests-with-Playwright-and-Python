@@ -1,0 +1,33 @@
+name: Playwright Python Tests
+
+on:
+  push:
+    branches: [ dev, main ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Python dependencies
+        run: pip install -r TollShopApp/requirements.txt
+
+      - name: Install Playwright browsers
+        run: playwright install
+
+      - name: Run tests
+        run: pytest TollShopApp/Tests/purchase_products.py
