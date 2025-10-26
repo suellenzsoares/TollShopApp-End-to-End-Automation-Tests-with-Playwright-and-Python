@@ -24,7 +24,11 @@ Sensitive information like `BASE_URL`, `USER_EMAIL`, and `USER_PASSWORD` are sto
 ```
 BASE_URL=https://practicesoftwaretesting.com/
 USER_EMAIL=customer2@practicesoftwaretesting.com
-USER_PASSWORD= welcome01
+USER_PASSWORD=welcome01
+CARD_NUMBER=0000-0000-0000-0000
+CARD_EXPIRY=10/2028
+CARD_CVV=123
+CARD_NAME=Jack Howe
 ```
 IMPORTANT NOTICE: The data used in this example is fictitious and intended solely for testing purposes. It is crucial that when replicating this process, you use test data and do not insert or share real or confidential information.
 
@@ -75,12 +79,18 @@ cd Tests
 pytest purchase_products.py
 ```
 
+**Note on Test Setup:** For a larger test suite, it would be beneficial to configure Pytest fixtures (e.g., in a `conftest.py` file) to handle browser setup and teardown, as well as Page Object instantiation. However, for the purpose of demonstrating this single test, these steps are handled directly within the `test_purchase_products` function.
+
 To run tests with headless mode disabled (to see the browser in action):
 
 ```bash
 cd Tests
 pytest purchase_products.py --headed
 ```
+
+## Continuous Integration (CI)
+
+This repository includes a GitHub Actions workflow file (`.github/workflows/ci.yml`) that automatically installs dependencies and runs the Playwright + Pytest tests on every push or pull request. Environment variables required for the tests are configured directly in the workflow file for CI execution. You can customize this workflow to fit your team's needs.
 
 ## Project Structure
 
