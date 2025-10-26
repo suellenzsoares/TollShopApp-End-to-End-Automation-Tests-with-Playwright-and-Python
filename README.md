@@ -88,6 +88,10 @@ cd Tests
 pytest purchase_products.py --headed
 ```
 
+## Continuous Integration (CI)
+
+This repository includes a GitHub Actions workflow file (`.github/workflows/ci.yml`) that automatically installs dependencies and runs the Playwright + Pytest tests on every push or pull request. Environment variables required for the tests are configured directly in the workflow file for CI execution. You can customize this workflow to fit your team's needs.
+
 ## Project Structure
 
 *   `PageOjbect/`: Contains Page Object classes for interacting with web elements.
