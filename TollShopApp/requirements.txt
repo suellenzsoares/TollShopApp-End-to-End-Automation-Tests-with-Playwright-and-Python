@@ -2,4 +2,3 @@ playwright
 pytest
 python-dotenv
 pytest-playwright
-s
