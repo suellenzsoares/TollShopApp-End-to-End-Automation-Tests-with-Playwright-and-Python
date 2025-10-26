@@ -8,6 +8,14 @@ from pages.product_page import ProductPage
 from pages.cart_page import CartPage
 from pages.address_page import AddressPage
 from pages.payment_page import PaymentPage
+from dotenv import load_dotenv
+import os
+
+load_dotenv(dotenv_path='../.env')
+
+BASE_URL = os.getenv('BASE_URL')
+USER_EMAIL = os.getenv('USER_EMAIL')
+USER_PASSWORD = os.getenv('USER_PASSWORD')
 
 
 def test_purchase_products(playwright: Playwright) -> None:
@@ -25,10 +33,10 @@ def test_purchase_products(playwright: Playwright) -> None:
     
 
     # Go to https://practicesoftwaretesting.com/
-    page.goto("https://practicesoftwaretesting.com/")
+    page.goto(BASE_URL)
 
     menu_page.click_sign_in()
-    login_page.login_flow("customer2@practicesoftwaretesting.com", "welcome01")
+    login_page.login_flow(USER_EMAIL, USER_PASSWORD)
 
     page.wait_for_url("**/account")
     menu_page.click_home()
@@ -54,6 +62,7 @@ def test_purchase_products(playwright: Playwright) -> None:
     
     expect(payment_page.get_payment_success_message()).to_contain_text("Payment was successful")
     payment_page.click_finish_button()
+
 
     expect(payment_page.get_payment_order_confirmation()).to_contain_text("Thanks for your order! Your invoice number is ")
 
