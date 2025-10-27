@@ -38,7 +38,11 @@ def test_purchase_products(playwright: Playwright) -> None:
     # Instantiates Page Object classes for each part of the application
     login_page = LoginPage(page)
     menu_page = MenuPage(page)
-    side_menu_page = SideMenuPage(page)
+    side_menu_page = SideMenuPage(page) 
+    page.wait_for_selector('[data-test="nav-sign-in"]', timeout=30000)   
+    print("BASE_URL:", BASE_URL)
+    page.screenshot(path="screenshot_before_sign_in.png")    
+    menu_page.click_sign_in()
     searched_products_page = SearchedProductsPage(page)
     product_page = ProductPage(page)
     cart_page = CartPage(page)
