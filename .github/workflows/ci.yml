@@ -17,6 +17,13 @@ jobs:
       CARD_CVV: 123
       CARD_NAME: Jack Howe
 
+  name: Upload Playwright screenshot
+  if: always()
+  uses: actions/upload-artifact@v4
+  with:
+    name: playwright-screenshots
+    path: TollShopApp/Tests/screenshot_after_goto.png
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
