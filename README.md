@@ -92,6 +92,12 @@ pytest purchase_products.py --headed
 
 This repository includes a GitHub Actions workflow file (`.github/workflows/ci.yml`) that automatically installs dependencies and runs the Playwright + Pytest tests on every push or pull request. Environment variables required for the tests are configured directly in the workflow file for CI execution. You can customize this workflow to fit your team's needs.
 
+**Important note about CI/CD:**
+If you run tests against public sites protected by Cloudflare or similar anti-bot solutions (like https://practicesoftwaretesting.com/), your tests may fail in CI environments (such as GitHub Actions) due to automated access being blocked. Locally, the tests may pass, but in CI, the site may show a 'Just a moment...' page or block navigation. For reliable CI execution, use a test environment without anti-bot protection, or request access for your CI runner IP if possible.
+
+**Why the pipeline may fail (personal explanation):**
+Please note that the automated tests in this project are designed to interact with a public website that uses Cloudflare or similar anti-bot protection. When running the tests locally, everything works as expected because my browser is not blocked. However, when the tests run in the CI pipeline (GitHub Actions), the site detects automated access and shows a 'Just a moment...' page or blocks navigation, preventing the tests from passing. This is a common issue when testing against sites with strong bot protection. For a successful pipeline, you would need to use a test environment without these protections or request access for the CI runner IP.
+
 ## Project Structure
 
 *   `PageOjbect/`: Contains Page Object classes for interacting with web elements.
