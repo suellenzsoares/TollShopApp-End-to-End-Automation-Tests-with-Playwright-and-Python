@@ -38,7 +38,7 @@ def test_purchase_products(playwright: Playwright) -> None:
     # Instantiates Page Object classes for each part of the application
     login_page = LoginPage(page)
     menu_page = MenuPage(page)
-    side_menu_page = SideMenuPage(page)
+    side_menu_page = SideMenuPage(page)    
     searched_products_page = SearchedProductsPage(page)
     product_page = ProductPage(page)
     cart_page = CartPage(page)
