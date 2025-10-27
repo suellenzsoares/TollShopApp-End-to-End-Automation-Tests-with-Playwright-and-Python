@@ -53,6 +53,7 @@ def test_purchase_products(playwright: Playwright) -> None:
     print("Current URL:", page.url)
     print("Page title:", page.title())
     page.screenshot(path="screenshot_after_goto.png")
+    page.wait_for_url("**/account")
 
     # Login flow
     menu_page.click_sign_in()
